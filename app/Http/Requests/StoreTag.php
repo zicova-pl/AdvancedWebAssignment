@@ -13,7 +13,7 @@ class StoreTag extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class StoreTag extends FormRequest
     public function rules()
     {
         return [
-          'name' => 'required |regex:/^(A-Z a-z)$/',
+          'name' => [
+            'required',
+            'unique:tags,name,:id'
+           ] ,
          ];
     }
 }

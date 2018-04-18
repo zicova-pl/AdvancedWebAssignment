@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use App\Tag;
+use App\Http\Requests;
+use App\Http\Requests\StoreTag;
 
 class TagController extends Controller
 {
@@ -42,7 +44,7 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTag $request)
     {
       $tag = new Tag();
       $tag ->fill($request -> all());
@@ -89,8 +91,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreTag $request, $id)
     {
+
       $tag = Tag::find($id);
       if(!$tag) throw new ModelNotFoundException;
 

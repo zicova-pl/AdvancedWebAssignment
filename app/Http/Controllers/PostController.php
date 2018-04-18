@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use Carbon\Carbon;
+use App\Http\Requests;
+use App\Http\Requests\StoreBlogPost;
 use Auth;
 
 class PostController extends Controller
@@ -48,7 +50,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBlogPost $request)
     {
         $post = new Post();
         $post->fill($request->all());
@@ -106,7 +108,9 @@ class PostController extends Controller
 
       $post->fill($request->all());
       $file = $request->file('image');
+      
       $image_name = Carbon::now()->timestamp.Auth::user()->id.'.jpg';
+
       $path = $file->storeAs('public/posts', $image_name);
       $post->image=$image_name;
       $post->save();

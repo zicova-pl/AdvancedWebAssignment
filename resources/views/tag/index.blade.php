@@ -5,6 +5,17 @@ use App\Tag;
 @section('title','| All Tags')
 @section('content')
 
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
+  
     <!-- Boostrap Boilerplate -->
     <div class="col-sm-offset-3 col-sm-6">
       <div class="well">

@@ -28,7 +28,7 @@ class StoreBlogPost extends FormRequest
           'category' => 'required',
           'content' => 'required',
           'image' => 'required',
-          'tag' => 'required',
+          'tag_id' => 'required',
         ];
     }
 }
